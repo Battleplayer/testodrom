@@ -9,21 +9,22 @@ const formStyle = {
     justifyContent: 'space-between'
 };
 
-export default props => {
-    const {value, saveName} = props;
-    console.log(props);
+export default ({value, saveName, onChange}) => {
+    // const {value, saveName, onChange} = props;
+    console.log(saveName);
 
     return (
         <div>
             <h1>IT'S HOME</h1>
             <form
-                style={formStyle}
-                onSubmit={e => {
+                style = {formStyle}
+                onSubmit = {e => {
                     e.preventDefault();
                     saveName();
-                }}>
+                }}
+            >
                 <label htmlFor="userName">Enter your name
-                    <input type="text" id='userName' value={value}/>
+                    <input type="text" id='userName' value={value} onChange={onChange}/>
                 </label>
                 <button>Submit name</button>
             </form>

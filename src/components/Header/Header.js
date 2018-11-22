@@ -5,18 +5,16 @@ import {connect} from 'react-redux';
 class Header extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             name: props.name,
         };
-
     };
 
     render() {
         return (
             <div>
                 <h1>
-                    {this.props.name ? 'HI, {this.props.name}' : 'Hello, enter your name!'}
+                    {this.props.name ? `HI, ${this.props.name}` : 'Hello, enter your name!'}
                 </h1>
                 <nav>
                     <li><Link to="/">Home</Link></li>
@@ -27,7 +25,7 @@ class Header extends Component {
             </div>
         )
     }
-};
+}
 
 const mapStateToProps = ({savedValues}) => ({...savedValues});
 
