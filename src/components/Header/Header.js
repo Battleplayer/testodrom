@@ -1,28 +1,34 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
 
 class Header extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
-            inputValue: 'nothing'
+            name: props.name,
         };
+
     };
 
     render() {
         return (
             <div>
-                <h1>text</h1>
-                <p>{this.state.inputValue}</p>
+                <h1>
+                    {this.props.name ? 'HI, {this.props.name}' : 'Hello, enter your name!'}
+                </h1>
                 <nav>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/page1">Page1</Link></li>
+                    <li><Link to="/page1">Page</Link></li>
                     <li><Link to="/main">Main</Link></li>
                     <li><Link to="/about">About</Link></li>
                 </nav>
             </div>
         )
     }
-}
+};
 
-export default Header;
+const mapStateToProps = ({savedValues}) => ({...savedValues});
+
+export default connect(mapStateToProps)(Header);
