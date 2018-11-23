@@ -1,0 +1,8 @@
+header {
+    position: relative;
+}
+.logout{
+    position: absolute;
+    top: 4%;
+    right: 15%;
+}

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
+
+import './Header.css';
 
 class Header extends Component {
     constructor(props) {
@@ -9,24 +11,28 @@ class Header extends Component {
             name: props.name,
         };
     };
-
+    myStyle = {
+        fontWeight: "700",
+        color: "red"
+    };
     render() {
         return (
-            <div>
+            <header>
                 <h1>
                     {this.props.name ? `HI, ${this.props.name}` : 'Hello, enter your name!'}
                 </h1>
+                {this.props.name ? <button className='logout' onClick={this.props.remove}>Logout</button> :''}
                 <nav>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/page1">Page</Link></li>
-                    <li><Link to="/main">Main</Link></li>
-                    <li><Link to="/about">About</Link></li>
+                    <li><NavLink exact activeStyle={this.myStyle} to="/">Home</NavLink></li>
+                    <li><NavLink activeStyle={this.myStyle} to="/page">Page</NavLink></li>
+                    <li><NavLink activeStyle={this.myStyle} to="/main">Main</NavLink></li>
+                    <li><NavLink activeStyle={this.myStyle} to="/about">About</NavLink></li>
                 </nav>
-            </div>
+            </header>
         )
     }
 }
 
 const mapStateToProps = ({savedValues}) => ({...savedValues});
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));

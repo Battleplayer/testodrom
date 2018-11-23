@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { Switch, Route,} from "react-router-dom";
+import {Switch, Route, withRouter} from "react-router-dom";
 
-import {addName} from '../redux/actions/Action';
+import {addName, removeName} from '../redux/actions/Action';
 import Home from "../components/Home";
 import About from "../components/About";
 import Main from "../components/Main";
 import Page from "../components/Page";
+import Header from "../components/Header/Header";
 
 class MainContainer extends Component {
     constructor(props) {
@@ -15,32 +16,36 @@ class MainContainer extends Component {
         this.state = {
             name: props.name,
         };
-
     }
 
-    playerNameChangeHandler = ({ target: { value } }) =>
+    playerNameChangeHandler = ({target: {value}}) =>
         this.setState({
             name: value,
         });
 
-    storeName = () => this.props.name(this.state.name);
+    storeName = () => this.props.addName(this.state.name);
+    deleteName = () => this.props.removeName('');
+
     render() {
-        const { name } = this.state;
-        console.log(name);
+        const {name} = this.state;
         return (
-            <Switch>
-                <Route exact path="/" component={Home}
-                       value={name}
-                       onChange={this.playerNameChangeHandler}
-                       saveName={this.storeName}/>
-                <Route path="/about" component={About}/>
-                <Route path="/main" component={Main} />
-                <Route path="/page" component={Page}/>
-            </Switch>
+            <React.Fragment>
+                <Header remove={this.deleteName}/>
+                <Switch>
+                    <Route exact path="/"
+                           render={() => (
+                               <Home value={name}
+                                     saveName={this.storeName}
+                                     onChange={this.playerNameChangeHandler}/>
+                           )}/>
+                    <Route path="/about" component={About}/>
+                    <Route path="/main" component={Main}/>
+                    <Route path="/page" component={Page}/>
+                </Switch>
+            </React.Fragment>
         )
     }
 }
-
 
 const mapStateToProps = ({savedValues}) => ({
     ...savedValues,
@@ -48,12 +53,13 @@ const mapStateToProps = ({savedValues}) => ({
 const mapDispatchToProps = dispatcher =>
     bindActionCreators(
         {
-            addName
+            addName,
+            removeName
         },
         dispatcher,
     );
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(MainContainer);
+)(MainContainer));

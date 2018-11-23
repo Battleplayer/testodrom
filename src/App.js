@@ -13,7 +13,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="App">
-                    <Header/>
+                    {/*<Header/>*/}
                     <MainContainer/>
                     <Footer/>
                 </div>
