@@ -7,7 +7,7 @@ import {addName, removeName} from '../redux/actions/Action';
 import Home from "../components/Home";
 import About from "../components/About";
 import Main from "../components/Main";
-import Page from "../components/Page";
+import ProductsListContainer from "../containers/ProductsListContainer";
 import Header from "../components/Header/Header";
 
 class MainContainer extends Component {
@@ -40,7 +40,7 @@ class MainContainer extends Component {
                            )}/>
                     <Route path="/about" component={About}/>
                     <Route path="/main" component={Main}/>
-                    <Route path="/page" component={Page}/>
+                    <Route path="/ProductsList" component={ProductsListContainer}/>
                 </Switch>
             </React.Fragment>
         )

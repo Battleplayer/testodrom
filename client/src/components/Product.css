@@ -1,0 +1,13 @@
+img, .cont{
+    flex:1 0 50%;
+}
+img {
+    /*max-width: 100px;*/
+}
+.cont{
+    display: flex;
+    flex-direction: column;
+}
+p {
+    margin: 0;
+}

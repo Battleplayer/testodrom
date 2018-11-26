@@ -24,7 +24,7 @@ class Header extends Component {
                 {this.props.name ? <button className='logout' onClick={this.props.remove}>Logout</button> :''}
                 <nav>
                     <li><NavLink exact activeStyle={this.myStyle} to="/">Home</NavLink></li>
-                    <li><NavLink activeStyle={this.myStyle} to="/page">Page</NavLink></li>
+                    <li><NavLink activeStyle={this.myStyle} to="/ProductsList">ProductsList</NavLink></li>
                     <li><NavLink activeStyle={this.myStyle} to="/main">Main</NavLink></li>
                     <li><NavLink activeStyle={this.myStyle} to="/about">About</NavLink></li>
                 </nav>
