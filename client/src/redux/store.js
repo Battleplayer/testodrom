@@ -1,11 +1,19 @@
-import { createStore, combineReducers } from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 
-import valueState from './reducers/Reducer';
+import savedValues from './reducers/Reducer';
+import products from './reducers/loadProductsReducer'
 
 const rootReducer = combineReducers({
-    savedValues: valueState
+    savedValues,
+    products
 });
 
-export default (process.env.NODE_ENV === 'development'
-    ? createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-    : createStore(rootReducer));
+export default createStore(rootReducer, applyMiddleware(thunk))
+// (process.env.NODE_ENV === 'development'
+//     ? createStore(
+//         rootReducer,
+//         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+//         applyMiddleware(thunk),
+//     )
+//     : createStore(rootReducer, applyMiddleware(thunk)));

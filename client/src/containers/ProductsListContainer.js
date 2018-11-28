@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import axios from 'axios';
-import {Link, Route} from 'react-router-dom'
+import {fetchData} from '../redux/actions/Action';
+import {bindActionCreators} from 'redux';
 
-import Product from '../components/Product';
+import {Link} from 'react-router-dom'
+
+import Product from '../components/Product/Product';
 import './ProductsListContainer.css'
 
 class ProductsListContainer extends Component {
@@ -12,43 +14,44 @@ class ProductsListContainer extends Component {
         super(props);
         this.state = {
             products: []
-        }
+        };
+
     }
 
     componentDidMount() {
-        axios.get("http://localhost:3001/productslist").then(resp => {
-                let result = resp.data.productslist;
-                this.setState({
-                    products: result
-                });
-            });
+        this.props.fetchData();
     }
 
     render() {
-        const {products } = this.state;
+        const {products, error} = this.props;
         return (
             <div>
-                    <ul>
-                        {products && products.map(prod => (
+                <ul>
+                    {products && products.map(prod => (
                         <li key={prod.id}>
-                            <Link to={prod.id} >
-                                <Product product={prod}/>
+                            <Link to={`/ProductsList/${prod.id}`}>
+                                <Product product={prod} id = {prod.id} isPreview='1'/>
                             </Link>
-                            <Route path="/about" component={Product}/>
-
                         </li>
-                        ))}
-                    </ul>
-
+                    ))}
+                </ul>
+                {error}
             </div>
         )
     }
 }
 
 
-const mapStateToProps = ({savedValues}) => ({
-    ...savedValues,
-});
+const mapStateToProps = store => {
+    const {products} = store;
+    return products;
+};
+const mapDispatchToProps = dispatcher =>
+    bindActionCreators(
+        {
+            fetchData
+        },
+        dispatcher,
+    );
 
-
-export default withRouter(connect(mapStateToProps)(ProductsListContainer));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductsListContainer));
