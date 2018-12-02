@@ -10,13 +10,6 @@ import Product from '../components/Product/Product';
 import './ProductsListContainer.css'
 
 class ProductsListContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: []
-        };
-
-    }
 
     componentDidMount() {
         this.props.fetchData();
@@ -29,8 +22,8 @@ class ProductsListContainer extends Component {
                 <ul>
                     {products && products.map(prod => (
                         <li key={prod.id}>
-                            <Link to={`/ProductsList/${prod.id}`}>
-                                <Product product={prod} id = {prod.id} isPreview='1'/>
+                            <Link exact="true" to={`/ProductsList/${prod.id}`}>
+                                <Product product={prod} id={prod.id} isPreview='1'/>
                             </Link>
                         </li>
                     ))}

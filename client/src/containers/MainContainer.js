@@ -17,6 +17,7 @@ class MainContainer extends Component {
         this.state = {
             name: props.name,
         };
+
     }
 
     playerNameChangeHandler = ({target: {value}}) =>
@@ -30,7 +31,8 @@ class MainContainer extends Component {
 
     render() {
         const {name} = this.state;
-        const {products} = this.props;
+        const {products, match} = this.props;
+
         return (
             <React.Fragment>
                 <Header remove={this.deleteName}/>
@@ -41,12 +43,12 @@ class MainContainer extends Component {
                                      saveName={this.storeName}
                                      onChange={this.playerNameChangeHandler}/>
                            )}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/main" component={Main}/>
-                    <Route path="/ProductsList" component={ProductsListContainer}/>
-                    <Route path="/ProductsList/:id"
+                    <Route exact path="/about" component={About}/>
+                    <Route exact path="/main" component={Main}/>
+                    <Route exact path="/ProductsList" component={ProductsListContainer}/>
+                    <Route exact path='/ProductsList/:id'
                            render={() => (
-                               <Product product={products} isPreview=''/>
+                               <Product products={products} match={match} isPreview=''/>
                            )}/>
                 </Switch>
             </React.Fragment>
@@ -54,8 +56,9 @@ class MainContainer extends Component {
     }
 }
 
-const mapStateToProps = ({savedValues}) => ({
+const mapStateToProps = ({savedValues, products}) => ({
     ...savedValues,
+    ...products
 });
 const mapDispatchToProps = dispatcher =>
     bindActionCreators(

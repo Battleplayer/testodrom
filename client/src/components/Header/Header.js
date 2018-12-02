@@ -11,10 +11,7 @@ class Header extends Component {
             name: props.name,
         };
     };
-    myStyle = {
-        fontWeight: "700",
-        color: "red"
-    };
+
     render() {
         return (
             <header>
@@ -23,10 +20,10 @@ class Header extends Component {
                 </h1>
                 {this.props.name ? <button className='logout' onClick={this.props.remove}>Logout</button> :''}
                 <nav>
-                    <li><NavLink exact activeStyle={this.myStyle} to="/">Home</NavLink></li>
-                    <li><NavLink activeStyle={this.myStyle} to="/ProductsList">ProductsList</NavLink></li>
-                    <li><NavLink activeStyle={this.myStyle} to="/main">Main</NavLink></li>
-                    <li><NavLink activeStyle={this.myStyle} to="/about">About</NavLink></li>
+                    <li><NavLink exact  activeClassName="selected" to="/">Home</NavLink></li>
+                    <li><NavLink  activeClassName="selected" to="/ProductsList">ProductsList</NavLink></li>
+                    <li><NavLink  activeClassName="selected" to="/main">Main</NavLink></li>
+                    <li><NavLink  activeClassName="selected" to="/about">About</NavLink></li>
                 </nav>
             </header>
         )
