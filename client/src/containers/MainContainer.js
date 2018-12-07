@@ -3,13 +3,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Switch, Route, withRouter} from "react-router-dom";
 
-import {addName, removeName} from '../redux/actions/Action';
+import {addName} from '../redux/actions/Action';
 import Home from "../components/Home/Home";
 import About from "../components/About";
 import Main from "../components/Main";
 import Product from "../components/Product/Product";
 import ProductsListContainer from "../containers/ProductsListContainer";
-import Header from "../components/Header/Header";
 
 class MainContainer extends Component {
     constructor(props) {
@@ -26,8 +25,6 @@ class MainContainer extends Component {
         });
 
     storeName = () => this.props.addName(this.state.name);
-    deleteName = () => this.props.removeName('');
-
 
     render() {
         const {name} = this.state;
@@ -35,7 +32,6 @@ class MainContainer extends Component {
 
         return (
             <React.Fragment>
-                <Header remove={this.deleteName}/>
                 <Switch>
                     <Route exact path="/"
                            render={() => (
@@ -63,8 +59,7 @@ const mapStateToProps = ({savedValues, products}) => ({
 const mapDispatchToProps = dispatcher =>
     bindActionCreators(
         {
-            addName,
-            removeName
+            addName
         },
         dispatcher,
     );

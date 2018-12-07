@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 import './Product.css'
 import {connect} from "react-redux";
@@ -26,37 +26,26 @@ class Product extends Component {
     render() {
         const {product, isPreview} = this.props;
         let res = this.state.res;
-        if (isPreview) {
-            return (
-                <Fragment>
-                    <img src={product.simage} alt={product.name}/>
-                    <div className="cont">
-                        <h3>Name: {product.name}</h3>
-                        <p>Vendor: {product.vendor}</p>
-                        <p>RAM: {product.RAM}</p>
-                        <p>ROM: {product.ROM}</p>
-                        <p>Price: {product.price} $</p>
-                    </div>
-                </Fragment>
-            )
-        } else {
-            return (
-                <div className="soloItem">
-                    <img src={res.bimage} alt={res.name}/>
-                    <div className="cont">
-                        <h3>Name: {res.name}</h3>
-                        <p>Vendor: {res.vendor}</p>
-                        <p>CPU: {res.CPU}</p>
-                        <p>RAM: {res.RAM}</p>
-                        <p>ROM: {res.ROM}</p>
-                        <p>Size: {res.size}"</p>
-                        <p>Back camera: {res.backcam}</p>
-                        <p>Front camera: {res.frontcam}</p>}
-                        <p>Price: {res.price} $</p>
-                    </div>
+        let item;
+        if (product === undefined) {
+            item = res
+        } else item = product;
+        return (
+            <div className="soloItem">
+                {isPreview ? <img src={item.simage} alt={item.name}/> : <img src={item.bimage} alt={item.name}/>}
+                <div className="cont">
+                    <h3>Name: {item.name}</h3>
+                    <p>Vendor: {item.vendor}</p>
+                    {isPreview ? '' : <p>CPU: {item.CPU}</p>}
+                    <p>RAM: {item.RAM}</p>
+                    <p>ROM: {item.ROM}</p>
+                    <p>Size: {item.size}"</p>
+                    {isPreview ? '' : <p>Back camera: {item.backcam}</p>}
+                    {isPreview ? '' : <p>Front camera: {item.frontcam}</p>}
+                    <p>Price: {item.price} $</p>
                 </div>
-            )
-        }
+            </div>
+        )
     }
 }
 
