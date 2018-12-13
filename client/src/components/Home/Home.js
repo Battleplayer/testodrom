@@ -3,9 +3,10 @@ import React from 'react';
 import './Home.css'
 
 export default ({value, saveName, onChange}) => {
+    console.log(saveName);
     return (
         <div>
-            <form
+            <form className="nameForm"
                 onSubmit={e => {
                     e.preventDefault();
                     saveName();

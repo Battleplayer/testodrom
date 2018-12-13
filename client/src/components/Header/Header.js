@@ -26,6 +26,7 @@ class Header extends Component {
                 <nav>
                     <li><NavLink exact activeClassName="selected" to="/">Home</NavLink></li>
                     <li><NavLink activeClassName="selected" to="/ProductsList">ProductsList</NavLink></li>
+                    <li><NavLink activeClassName="selected" to="/new">New Product</NavLink></li>
                     <li><NavLink activeClassName="selected" to="/main">Main</NavLink></li>
                     <li><NavLink activeClassName="selected" to="/about">About</NavLink></li>
                 </nav>
@@ -36,6 +37,6 @@ class Header extends Component {
 
 const mapStateToProps = ({savedValues}) => ({...savedValues});
 const mapDispatchToProps = dispatcher =>
-    bindActionCreators({removeName}, dispatcher,);
+    bindActionCreators({removeName}, dispatcher);
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

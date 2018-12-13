@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Switch, Route, withRouter} from "react-router-dom";
 
-import {addName} from '../redux/actions/Action';
+import {addName, addProduct} from '../redux/actions/Action';
 import Home from "../components/Home/Home";
 import About from "../components/About";
 import Main from "../components/Main";
 import Product from "../components/Product/Product";
 import ProductsListContainer from "../containers/ProductsListContainer";
+import NewProduct from "../components/NewProduct/NewProduct";
 
 class MainContainer extends Component {
     constructor(props) {
@@ -21,13 +22,15 @@ class MainContainer extends Component {
 
     playerNameChangeHandler = ({target: {value}}) =>
         this.setState({
-            name: value,
+            userName: value,
         });
 
-    storeName = () => this.props.addName(this.state.name);
+    newProductHandler = () => this.props.addProduct(this.state.newProduct);
+
+    storeName = () => this.props.addName(this.state.userName);
 
     render() {
-        const {name} = this.state;
+        const {userName} = this.state;
         const {products, match} = this.props;
 
         return (
@@ -35,12 +38,15 @@ class MainContainer extends Component {
                 <Switch>
                     <Route exact path="/"
                            render={() => (
-                               <Home value={name}
+                               <Home value={userName}
                                      saveName={this.storeName}
                                      onChange={this.playerNameChangeHandler}/>
                            )}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/main" component={Main}/>
+                    <Route exact path="/new" component={NewProduct}
+                           onSubmit={this.newProductHandler}
+                    />
                     <Route exact path="/ProductsList" component={ProductsListContainer}/>
                     <Route exact path='/ProductsList/:id'
                            render={() => (
@@ -52,14 +58,16 @@ class MainContainer extends Component {
     }
 }
 
-const mapStateToProps = ({savedValues, products}) => ({
+const mapStateToProps = ({savedValues, products, newProduct}) => ({
     ...savedValues,
-    ...products
+    ...products,
+    ...newProduct
 });
 const mapDispatchToProps = dispatcher =>
     bindActionCreators(
         {
-            addName
+            addName,
+            addProduct
         },
         dispatcher,
     );

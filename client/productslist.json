@@ -1,0 +1,271 @@
+{
+  "productslist": [
+    {
+      "id": 10001,
+      "vendor": "Apple",
+      "name": "iPhone X 64GB Space Gray",
+      "CPU": "Apple A11 Bionic",
+      "RAM": 3,
+      "ROM": 64,
+      "size": 5.8,
+      "backcam": 12,
+      "frontcam": 7,
+      "price": 37000,
+      "simage": "http://hotline.ua/img/tx/158/158046388_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/158/1580463885.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 10002,
+      "vendor": "Apple",
+      "name": "iPhone 7 32GB Black",
+      "CPU": "Apple A10 Fusion",
+      "RAM": 2,
+      "ROM": 32,
+      "size": 4.7,
+      "backcam": 12,
+      "frontcam": 7,
+      "price": 23400,
+      "simage": "http://hotline.ua/img/tx/157/157995082_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/157/1579950825.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 20001,
+      "vendor": "LG",
+      "name": "H990 V20 Dual 64GB",
+      "CPU": "Qualcomm Snapdragon 820",
+      "RAM": 4,
+      "ROM": 64,
+      "size": 5.7,
+      "backcam": 16,
+      "frontcam": 5,
+      "price": 11000,
+      "simage": "http://hotline.ua/img/tx/119/119410492_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/119/1194104925.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 20002,
+      "vendor": "LG",
+      "name": "H850 G5",
+      "CPU": "Qualcomm Snapdragon 820",
+      "RAM": 4,
+      "ROM": 32,
+      "size": 5.3,
+      "backcam": 16,
+      "frontcam": 8,
+      "price": 8600,
+      "simage": "http://hotline.ua/img/tx/856/85684670_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/856/856846705.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 30001,
+      "vendor": "Samsung",
+      "name": "Galaxy S8 64GB Black",
+      "CPU": "Samsung Exynos 8895",
+      "RAM": 4,
+      "ROM": 64,
+      "size": 5.8,
+      "backcam": 12,
+      "frontcam": 8,
+      "price": 25000,
+      "simage": "http://hotline.ua/img/tx/144/144618870_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/144/1446188705.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 30002,
+      "vendor": "Samsung",
+      "name": "Galaxy Note 8 64GB Black",
+      "CPU": "Samsung Exynos 8895",
+      "RAM": 6,
+      "ROM": 64,
+      "size": 6.3,
+      "backcam": 12,
+      "frontcam": 8,
+      "price": 41500,
+      "simage": "http://hotline.ua/img/tx/155/155786138_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/155/1557861385.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 30003,
+      "vendor": "Samsung",
+      "name": "Galaxy A8 2018 Black",
+      "CPU": "Samsung Exynos 8895",
+      "RAM": 4,
+      "ROM": 32,
+      "size": 5.6,
+      "backcam": 16,
+      "frontcam": 16,
+      "price": 15000,
+      "simage": "http://hotline.ua/img/tx/159/159844220_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/159/1598442205.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 40001,
+      "vendor": "Sony",
+      "name": "Xperia X Dual F5122",
+      "CPU": "Qualcomm Snapdragon 650",
+      "RAM": 3,
+      "ROM": 64,
+      "size": 5,
+      "backcam": 23,
+      "frontcam": 13,
+      "price": 8200,
+      "simage": "http://hotline.ua/img/tx/158/158425035_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/158/1584250355.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 40002,
+      "vendor": "Sony",
+      "name": "Xperia Z5 Dual E6633",
+      "CPU": "Qualcomm Snapdragon 810",
+      "RAM": 3,
+      "ROM": 32,
+      "size": 5.2,
+      "backcam": 23,
+      "frontcam": 5,
+      "price": 8900,
+      "simage": "http://hotline.ua/img/tx/890/89067211_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/890/890672115.jpg",
+      "comments": [
+        {
+          "name": "111",
+          "value": "Great smartphone"
+        },
+        {
+          "name": "123",
+          "value": "Best of all"
+        },
+        {
+          "name": "admin",
+          "value": "Don't buy ITl"
+        }
+      ]
+    },
+    {
+      "id": 70007,
+      "vendor": "Xiaomi",
+      "name": "Mi A2 lite",
+      "CPU": "Snapdragon 620",
+      "RAM": 4,
+      "ROM": 64,
+      "size": 5.84,
+      "backcam": "12+6",
+      "frontcam": 5,
+      "price": 6000,
+      "simage": "https://hotline.ua/img/tx/178/178073809_s265.jpg",
+      "bimage": "http://hotline.ua/img/tx/178/1780738095.jpg",
+      "comments": []
+    }
+  ]
+}

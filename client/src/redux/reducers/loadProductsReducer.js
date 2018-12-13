@@ -18,7 +18,7 @@ export default function (state = defaultState, {type = '', payload = {}}){
                 return {
                     ...state,
                     isRequestInProgress: false,
-                    products: payload.products.productslist,
+                    products: payload.products,
                 };
                 case actionTypes.REQUEST_ERROR:
                 return {
