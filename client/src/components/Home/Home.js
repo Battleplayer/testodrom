@@ -1,19 +1,12 @@
 import React from 'react';
 
-const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '200px',
-    margin: '0 auto',
-    height: '100px',
-    justifyContent: 'space-between'
-};
+import './Home.css'
 
 export default ({value, saveName, onChange}) => {
+    console.log(saveName);
     return (
         <div>
-            <form
-                style={formStyle}
+            <form className="nameForm"
                 onSubmit={e => {
                     e.preventDefault();
                     saveName();

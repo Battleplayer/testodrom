@@ -1,0 +1,16 @@
+img {
+    max-width: 100%;
+    flex: 1 0 auto;
+}
+.cont{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+p {
+    margin: 0;
+}
+.soloItem {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,7 +1,6 @@
 import {actionTypes} from '../actions/Action';
 
 const defaultState = {
-    value: 'something',
     name: '',
 };
 

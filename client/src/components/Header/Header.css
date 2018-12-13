@@ -6,3 +6,7 @@ header {
     top: 4%;
     right: 15%;
 }
+.selected {
+    font-weight: 700;
+    color: red;
+}
