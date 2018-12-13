@@ -5,11 +5,9 @@ import storage from 'redux-persist/lib/storage'
 
 import savedValues from './reducers/Reducer';
 import products from './reducers/loadProductsReducer'
-import newProduct from './reducers/newProductReducer'
 
 const rootReducer = combineReducers({
     savedValues,
-    newProduct,
     products
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

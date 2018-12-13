@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Switch, Route, withRouter} from "react-router-dom";
 
-import {addName, addProduct} from '../redux/actions/Action';
+import {addName, sendData} from '../redux/actions/Action';
 import Home from "../components/Home/Home";
 import About from "../components/About";
 import Main from "../components/Main";
@@ -25,14 +25,14 @@ class MainContainer extends Component {
             userName: value,
         });
 
-    newProductHandler = () => this.props.addProduct(this.state.newProduct);
+    //newProductHandler = () => this.props.addProduct(this.state.Product);
 
     storeName = () => this.props.addName(this.state.userName);
 
     render() {
         const {userName} = this.state;
         const {products, match} = this.props;
-
+//addProd = {this.props.addProduct}/>
         return (
             <React.Fragment>
                 <Switch>
@@ -44,9 +44,11 @@ class MainContainer extends Component {
                            )}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/main" component={Main}/>
-                    <Route exact path="/new" component={NewProduct}
-                           onSubmit={this.newProductHandler}
-                    />
+                    <Route exact path="/new"
+                           render={() => (
+                               <NewProduct
+                                   sendDB = {this.props.sendData}/>
+                           )}/>
                     <Route exact path="/ProductsList" component={ProductsListContainer}/>
                     <Route exact path='/ProductsList/:id'
                            render={() => (
@@ -58,16 +60,15 @@ class MainContainer extends Component {
     }
 }
 
-const mapStateToProps = ({savedValues, products, newProduct}) => ({
+const mapStateToProps = ({savedValues, products}) => ({
     ...savedValues,
-    ...products,
-    ...newProduct
+    ...products
 });
 const mapDispatchToProps = dispatcher =>
     bindActionCreators(
         {
             addName,
-            addProduct
+            sendData
         },
         dispatcher,
     );
