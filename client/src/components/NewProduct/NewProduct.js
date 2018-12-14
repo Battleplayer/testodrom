@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import { createHashHistory } from 'history';
+import {withRouter} from "react-router-dom";
 
 
 class NewProduct extends Component {
 
-    history = createHashHistory();
     onChangeVendor = (e) => {
         this.setState({vendor: e.target.value})
     };
@@ -34,15 +33,14 @@ class NewProduct extends Component {
     };
 
     render() {
+        console.log(this.props);
         const {sendDB} = this.props;
-
         return (
             <div>
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     sendDB(this.state);
-                    this.history.goBack();
-                     //this.props.history.push('/ProductsList')
+                    this.props.history.push('/ProductsList')
                 }}>
                     <label htmlFor="vendor">Enter vendor</label>
                     <input id="username" name="vendor" type="text" onChange={this.onChangeVendor}/>
@@ -69,4 +67,4 @@ class NewProduct extends Component {
     }
 }
 
-export default NewProduct;
+export default withRouter(NewProduct);
