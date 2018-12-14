@@ -16,12 +16,6 @@ export const addName = name => ({
         name,
     }
 });
-export const addProduct = newProduct => ({
-    type: actionTypes.ADD_NEW_PRODUCT,
-    payload: {
-        newProduct,
-    }
-});
 export const removeName = name => ({
     type: actionTypes.REMOVE_NAME,
     payload: {
@@ -50,4 +44,17 @@ export const fetchData = () => async dispatch => {
         .get("http://localhost:3001/productslist")
         .then(({data}) => dispatch(requestSuccess(data)))
         .catch(({message}) => dispatch(requestError(message)));
+};
+export const sendData = (body) => async dispatch => {
+    dispatch(requestStart());
+    await axios
+        .post("http://localhost:3001/productslist", body)
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+};
+export const deleteData = (id) => {
+    axios
+        .delete(`http://localhost:3001/productslist/${id}`)
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
 };

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 import './Product.css'
 import {connect} from "react-redux";
+import {deleteData} from '../../redux/actions/Action'
+import {bindActionCreators} from "redux";
 
 
 class Product extends Component {
@@ -12,11 +14,16 @@ class Product extends Component {
         };
     }
 
+    id = this.props.match.params.id;
+    delete = () => {
+        deleteData(this.id);
+        this.props.history.push('/ProductsList')
+    };
+
     componentWillMount() {
         const {isPreview, products} = this.props;
         if (!isPreview) {
-            const page = this.props.match.params.id;
-            let result = products.find(x => x.id === +page);
+            let result = products.find(x => x.id === +this.id);
             this.setState({
                 res: result,
             });
@@ -43,7 +50,9 @@ class Product extends Component {
                     {isPreview ? '' : <p>Back camera: {item.backcam}</p>}
                     {isPreview ? '' : <p>Front camera: {item.frontcam}</p>}
                     <p>Price: {item.price} $</p>
+                    {isPreview ? '' : <button onClick={this.delete}>Delete item</button>}
                 </div>
+
             </div>
         )
     }
@@ -51,4 +60,11 @@ class Product extends Component {
 
 const
     mapStateToProps = ({product}) => ({...product});
-export default withRouter(connect(mapStateToProps)(Product));
+const mapDispatchToProps = dispatcher =>
+    bindActionCreators(
+        {
+            deleteData
+        },
+        dispatcher,
+    );
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Product));
