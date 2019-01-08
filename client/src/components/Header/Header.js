@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink, withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
+import {FormattedMessage} from 'react-intl';
 
 import './Header.css';
 import {removeName} from "../../redux/actions/Action";
@@ -24,9 +25,9 @@ class Header extends Component {
                 </h1>
                 {this.props.name ? <button className='logout' onClick={this.deleteName}>Logout</button> : ''}
                 <nav>
-                    <li><NavLink exact activeClassName="selected" to="/">Home</NavLink></li>
-                    <li><NavLink activeClassName="selected" to="/ProductsList">ProductsList</NavLink></li>
-                    <li><NavLink activeClassName="selected" to="/new">New Product</NavLink></li>
+                    { this.props.name  ? '' : <li><NavLink exact activeClassName="selected" to="/"><FormattedMessage id='home'/></NavLink></li>}
+                    <li><NavLink activeClassName="selected" to="/ProductsList"><FormattedMessage id='productlist'/></NavLink></li>
+                    { !this.props.name  ? '' :   <li><NavLink activeClassName="selected" to="/new"><FormattedMessage id='newproduct'/></NavLink></li>}
                     <li><NavLink activeClassName="selected" to="/main">Main</NavLink></li>
                     <li><NavLink activeClassName="selected" to="/about">About</NavLink></li>
                 </nav>

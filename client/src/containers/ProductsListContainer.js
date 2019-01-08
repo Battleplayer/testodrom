@@ -8,11 +8,16 @@ import {Link} from 'react-router-dom'
 
 import Product from '../components/Product/Product';
 import './ProductsListContainer.css'
+import Helmet from "react-helmet/es/Helmet";
+import {FormattedMessage} from 'react-intl';
 
 class ProductsListContainer extends Component {
 
     componentDidMount() {
+        // if (this.props.isRequestInProgress === !this.props.isRequestInProgress) {
+
         this.props.fetchData();
+        // }
     }
 
     render() {
@@ -29,6 +34,11 @@ class ProductsListContainer extends Component {
                     ))}
                 </ul>
                 {error}
+                <FormattedMessage id="productlisttitle">
+                    {title => <Helmet>
+                        <title>{title}</title>
+                    </Helmet>}
+                </FormattedMessage>
             </div>
         )
     }

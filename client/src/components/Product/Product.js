@@ -4,6 +4,7 @@ import './Product.css'
 import {connect} from "react-redux";
 import {deleteData} from '../../redux/actions/Action'
 import {bindActionCreators} from "redux";
+import Helmet from "react-helmet/es/Helmet";
 
 
 class Product extends Component {
@@ -39,6 +40,10 @@ class Product extends Component {
         } else item = product;
         return (
             <div className="soloItem">
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>{item.name}</title>
+                </Helmet>
                 {isPreview ? <img src={item.simage} alt={item.name}/> : <img src={item.bimage} alt={item.name}/>}
                 <div className="cont">
                     <h3>Name: {item.name}</h3>
@@ -51,6 +56,7 @@ class Product extends Component {
                     {isPreview ? '' : <p>Front camera: {item.frontcam}</p>}
                     <p>Price: {item.price} $</p>
                     {isPreview ? '' : <button onClick={this.delete}>Delete item</button>}
+                    {isPreview ? '' : <button onClick={() => this.props.history.push('/ProductsList')}>Return</button>}
                 </div>
 
             </div>

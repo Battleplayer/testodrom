@@ -33,7 +33,6 @@ class NewProduct extends Component {
     };
 
     render() {
-        console.log(this.props);
         const {sendDB} = this.props;
         return (
             <div>

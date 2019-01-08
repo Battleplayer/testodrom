@@ -1,0 +1,9 @@
+{
+  "main": "Main",
+  "home": "Home",
+  "productlist": "Product List",
+  "newproduct": "New Product",
+  "enter_name":"Enter your name",
+  "submit_name":"Submit name",
+  "productlisttitle" : "Products list"
+}
