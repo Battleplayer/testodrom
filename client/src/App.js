@@ -21,23 +21,21 @@ const messages = {
 class App extends Component {
     constructor() {
         super();
-        this.state ={locale: 'en'}
+        this.state = {locale: 'en'}
     }
+
     changeLang = (e) => {
         this.setState({locale: e.target.value})
     };
+
     render() {
         const {locale} = this.state;
         return (
             <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
                 <BrowserRouter>
                     <div className="App">
-                        <select value={this.state.locale} onChange={this.changeLang}>
-                            <option value='en'>eng</option>
-                            <option value='uk'>uk</option>
-                        </select>
-                        <Header/>
-                        <MainContainer/>
+                        <Header localeValue={locale} changeLang={this.changeLang}/>
+                        <MainContainer localeValue={locale}/>
                         <Footer/>
                     </div>
                 </BrowserRouter>

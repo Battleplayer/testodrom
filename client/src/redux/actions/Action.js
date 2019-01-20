@@ -3,6 +3,7 @@ import axios from "axios/index";
 export const actionTypes = {
     ADD_NAME: 'ADD_NAME',
     REMOVE_NAME: 'REMOVE_NAME',
+    STORE_LOCALE: 'STORE_LOCALE',
     REQUEST_START: 'REQUEST_START',
     REQUEST_SUCCESS: 'REQUEST_SUCCESS',
     REQUEST_ERROR: 'REQUEST_ERROR',
@@ -22,6 +23,13 @@ export const removeName = name => ({
         name,
     }
 });
+export const storeLocale = locale => ({
+    type: actionTypes.STORE_LOCALE,
+    payload: {
+        locale,
+    }
+});
+
 export const requestStart = () => ({
     type: actionTypes.REQUEST_START,
 });

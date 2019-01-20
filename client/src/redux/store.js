@@ -21,11 +21,3 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export let store = createStore(persistedReducer, composeEnhancer(applyMiddleware(thunk)));
 export let persistor = persistStore(store);
-
-// work backup
-// const store = createStore(
-//     rootReducer,
-//     composeEnhancer(applyMiddleware(thunk)),
-// );
-//
-// export default store;

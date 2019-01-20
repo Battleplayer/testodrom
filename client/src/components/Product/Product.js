@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import {deleteData} from '../../redux/actions/Action'
 import {bindActionCreators} from "redux";
 import Helmet from "react-helmet/es/Helmet";
+import {StyledButton} from '../StyledComponent';
+import {FormattedMessage} from 'react-intl';
 
 
 class Product extends Component {
@@ -16,7 +18,7 @@ class Product extends Component {
     }
 
     id = this.props.match.params.id;
-    delete = () => {
+    deleteProduct = () => {
         deleteData(this.id);
         this.props.history.push('/ProductsList')
     };
@@ -41,7 +43,6 @@ class Product extends Component {
         return (
             <div className="soloItem">
                 <Helmet>
-                    <meta charSet="utf-8" />
                     <title>{item.name}</title>
                 </Helmet>
                 {isPreview ? <img src={item.simage} alt={item.name}/> : <img src={item.bimage} alt={item.name}/>}
@@ -55,8 +56,12 @@ class Product extends Component {
                     {isPreview ? '' : <p>Back camera: {item.backcam}</p>}
                     {isPreview ? '' : <p>Front camera: {item.frontcam}</p>}
                     <p>Price: {item.price} $</p>
-                    {isPreview ? '' : <button onClick={this.delete}>Delete item</button>}
-                    {isPreview ? '' : <button onClick={() => this.props.history.push('/ProductsList')}>Return</button>}
+                    {isPreview ? '' :
+                        <StyledButton color={`#ee595b`} onClick={this.deleteProduct}><FormattedMessage
+                            id="deleteItemButton"/> </StyledButton>}
+                    {isPreview ? '' : <StyledButton color={`#ABB8C3`}
+                                                    onClick={() => this.props.history.push('/ProductsList')}><FormattedMessage
+                        id="returnButton"/> </StyledButton>}
                 </div>
 
             </div>

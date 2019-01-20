@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Switch, Route, withRouter, Redirect} from "react-router-dom";
 
-import {addName, sendData} from '../redux/actions/Action';
+import {addName, sendData, storeLocale} from '../redux/actions/Action';
 import Home from "../components/Home/Home";
 import About from "../components/About";
 import Main from "../components/Main";
@@ -15,12 +15,17 @@ class MainContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: props.name,
+            userName: props.name,
+            locale: props.localeValue
         };
 
     }
 
-    playerNameChangeHandler = ({target: {value}}) =>
+    componentDidUpdate() {
+        this.props.storeLocale(this.props.localeValue);
+    }
+
+    userNameChangeHandler = ({target: {value}}) =>
         this.setState({
             userName: value,
         });
@@ -40,7 +45,7 @@ class MainContainer extends Component {
                                    (<Redirect to="/ProductsList"/>)
                                    : (<Home value={userName}
                                             saveName={this.storeName}
-                                            onChange={this.playerNameChangeHandler}/>
+                                            onChange={this.userNameChangeHandler}/>
                                    ))}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/main" component={Main}/>
@@ -56,8 +61,7 @@ class MainContainer extends Component {
                            render={() => (
                                <Product products={products} match={match} isPreview=''/>
                            )}/>
-                    <Route render={() =>
-                        <h1>Page not found </h1>}>
+                    <Route render={() => <h1>Page not found </h1>}>
                     </Route>
                 </Switch>
             </React.Fragment>
@@ -73,7 +77,8 @@ const mapDispatchToProps = dispatcher =>
     bindActionCreators(
         {
             addName,
-            sendData
+            sendData,
+            storeLocale
         },
         dispatcher,
     );

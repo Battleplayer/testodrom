@@ -3,8 +3,7 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {fetchData} from '../redux/actions/Action';
 import {bindActionCreators} from 'redux';
-
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 import Product from '../components/Product/Product';
 import './ProductsListContainer.css'
@@ -14,10 +13,9 @@ import {FormattedMessage} from 'react-intl';
 class ProductsListContainer extends Component {
 
     componentDidMount() {
-        // if (this.props.isRequestInProgress === !this.props.isRequestInProgress) {
-
-        this.props.fetchData();
-        // }
+        setTimeout(() => {
+            this.props.fetchData();
+        }, 700)
     }
 
     render() {
@@ -34,7 +32,7 @@ class ProductsListContainer extends Component {
                     ))}
                 </ul>
                 {error}
-                <FormattedMessage id="productlisttitle">
+                <FormattedMessage id="productListTitle">
                     {title => <Helmet>
                         <title>{title}</title>
                     </Helmet>}

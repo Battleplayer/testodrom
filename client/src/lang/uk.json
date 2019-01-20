@@ -1,10 +1,18 @@
 {
-  "main": "Головна",
-  "home": "Початкова",
-  "productlist": "Список товарів",
-  "newproduct": "Створити новий продукт",
-
   "enter_name":"Введіть своє ім'я",
   "submit_name":"Надіслати ім'я",
-  "productlisttitle" : "Список продуктів"
+  "logoutButton": "Вийти",
+  "saveProductButton": "Зберегти продукт",
+  "deleteItemButton": "Видалити продукт",
+  "returnButton": "Повернутись у попередне меню",
+  "hiMessage": "Раді знову тебе бачити ",
+  "needLoginMessage": "Привіт, введіть своє ім'я на Початковій сторінці",
+
+  "homePage": "Початкова",
+  "productListPage": "Список товарів",
+  "newProductPage": "Створити новий продукт",
+  "mainPage": "Це точно не головна",
+  "aboutPage": "Про нас",
+
+  "productListTitle" : "Список продуктів"
 }
