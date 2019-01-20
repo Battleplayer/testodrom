@@ -1,0 +1,18 @@
+{
+  "enter_name":"Enter your name",
+  "submit_name":"Submit name",
+  "logoutButton": "Logout",
+  "saveProductButton": "Save product",
+  "deleteItemButton": "Delete item",
+  "returnButton": "Return",
+  "hiMessage": "Welcome back ",
+  "needLoginMessage": "Hi, please login at Home page",
+
+  "homePage": "Home",
+  "productListPage": "Product List",
+  "newProductPage": "New Product",
+  "mainPage": "Main",
+  "aboutPage": " About",
+
+  "productListTitle" : "Products list"
+}

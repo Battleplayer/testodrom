@@ -8,9 +8,10 @@ img {
     flex: 1 0 auto;
 }
 p {
-    margin: 0;
+    margin: 2px;
 }
 .soloItem {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
 }

@@ -1,30 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {FormattedMessage} from 'react-intl';
 
-import './Home.css'
+import Helmet from "react-helmet/es/Helmet";
 
-// export default ({value, saveName, onChange}) => {
-class Home extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+import {StyledInput, StyledForm, StyledButton} from '../StyledComponent'
 
-    render() {
-        const {value, saveName, onChange} = this.props;
-        return (
-            <div>
-                <form className="nameForm"
-                      onSubmit={e => {
-                          e.preventDefault();
-                          saveName();
-                      }}
-                >
-                    <label htmlFor="userName">Enter your name
-                        <input type="text" id='userName' value={value} onChange={onChange}/>
-                    </label>
-                    <button>Submit name</button>
-                </form>
-            </div>
-        )
-    }
+export default ({value, saveName, onChange}) => {
+
+    return (
+        <div>
+            <Helmet>
+                <title>Time to enter your name</title>
+            </Helmet>
+            <StyledForm
+                onSubmit={e => {
+                    e.preventDefault();
+                    saveName();
+                }}
+            >
+                <label htmlFor="userName"><FormattedMessage id='enter_name'/>
+                    <StyledInput type="text" id='userName' value={value} onChange={onChange}/>
+                </label>
+                <StyledButton><FormattedMessage id='submit_name'/></StyledButton>
+            </StyledForm>
+        </div>
+    )
 }
-export default Home

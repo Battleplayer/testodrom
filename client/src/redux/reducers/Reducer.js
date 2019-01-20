@@ -5,17 +5,22 @@ const defaultState = {
 };
 
 export default function (state = defaultState, {type = '', payload = {}}) {
-    const {name} = payload;
+    const {name, locale} = payload;
     switch (type) {
         case actionTypes.ADD_NAME:
             return {
                 ...state,
                 name,
             };
-            case actionTypes.REMOVE_NAME:
+        case actionTypes.REMOVE_NAME:
             return {
                 ...state,
                 name,
+            };
+        case actionTypes.STORE_LOCALE:
+            return {
+                ...state,
+                locale,
             };
 
         default:

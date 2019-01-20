@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Switch, Route, withRouter} from "react-router-dom";
+import {Switch, Route, withRouter, Redirect} from "react-router-dom";
 
-import {addName, sendData} from '../redux/actions/Action';
+import {addName, sendData, storeLocale} from '../redux/actions/Action';
 import Home from "../components/Home/Home";
 import About from "../components/About";
 import Main from "../components/Main";
@@ -15,45 +15,54 @@ class MainContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: props.name,
+            userName: props.name,
+            locale: props.localeValue
         };
 
     }
 
-    playerNameChangeHandler = ({target: {value}}) =>
+    componentDidUpdate() {
+        this.props.storeLocale(this.props.localeValue);
+    }
+
+    userNameChangeHandler = ({target: {value}}) =>
         this.setState({
             userName: value,
         });
 
-    //newProductHandler = () => this.props.addProduct(this.state.Product);
 
     storeName = () => this.props.addName(this.state.userName);
 
     render() {
         const {userName} = this.state;
         const {products, match} = this.props;
-//addProd = {this.props.addProduct}/>
         return (
             <React.Fragment>
                 <Switch>
                     <Route exact path="/"
                            render={() => (
-                               <Home value={userName}
-                                     saveName={this.storeName}
-                                     onChange={this.playerNameChangeHandler}/>
-                           )}/>
+                               this.props.name ?
+                                   (<Redirect to="/ProductsList"/>)
+                                   : (<Home value={userName}
+                                            saveName={this.storeName}
+                                            onChange={this.userNameChangeHandler}/>
+                                   ))}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/main" component={Main}/>
                     <Route exact path="/new"
                            render={() => (
-                               <NewProduct
-                                   sendDB = {this.props.sendData}/>
+                               this.props.name ?
+                                   (<NewProduct
+                                       sendDB={this.props.sendData}/>)
+                                   : (<Redirect to="/"/>)
                            )}/>
                     <Route exact path="/ProductsList" component={ProductsListContainer}/>
                     <Route exact path='/ProductsList/:id'
                            render={() => (
                                <Product products={products} match={match} isPreview=''/>
                            )}/>
+                    <Route render={() => <h1>Page not found </h1>}>
+                    </Route>
                 </Switch>
             </React.Fragment>
         )
@@ -68,7 +77,8 @@ const mapDispatchToProps = dispatcher =>
     bindActionCreators(
         {
             addName,
-            sendData
+            sendData,
+            storeLocale
         },
         dispatcher,
     );

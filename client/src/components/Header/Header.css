@@ -5,8 +5,11 @@ header {
     position: absolute;
     top: 4%;
     right: 15%;
+    margin: 0;
 }
-.selected {
-    font-weight: 700;
-    color: red;
+.langSelect {
+    position: absolute;
+    top: 4%;
+    left: 5px;
+    height: 30px;
 }

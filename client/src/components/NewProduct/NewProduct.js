@@ -1,67 +1,73 @@
 import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
-
+import {StyledInput, StyledForm, StyledButton} from '../StyledComponent';
+import Helmet from "react-helmet";
+import {FormattedMessage} from 'react-intl';
 
 class NewProduct extends Component {
 
-    onChangeVendor = (e) => {
+    onChangeVendorValue = (e) => {
         this.setState({vendor: e.target.value})
     };
-    onChangeName = (e) => {
+    onChangeNameValue = (e) => {
         this.setState({name: e.target.value})
     };
-    onChangeCpu = (e) => {
+    onChangeCpuValue = (e) => {
         this.setState({CPU: e.target.value})
     };
-    onChangeRam = (e) => {
+    onChangeRamValue = (e) => {
         this.setState({RAM: e.target.value})
     };
-    onChangeRom = (e) => {
+    onChangeRomValue = (e) => {
         this.setState({ROM: e.target.value})
     };
-    onChangeSize = (e) => {
+    onChangeSizeValue = (e) => {
         this.setState({size: e.target.value})
     };
-    onChangeSimage = (e) => {
+    onChangeSimageValue = (e) => {
         this.setState({simage: e.target.value})
     };
-    onChangeBimage = (e) => {
+    onChangeBimageValue = (e) => {
         this.setState({bimage: e.target.value})
     };
-    onChangePrice = (e) => {
+    onChangePriceValue = (e) => {
         this.setState({price: e.target.value})
     };
 
     render() {
-        console.log(this.props);
         const {sendDB} = this.props;
         return (
             <div>
-                <form onSubmit={(e) => {
+                <StyledForm width={`400`} onSubmit={(e) => {
                     e.preventDefault();
                     sendDB(this.state);
                     this.props.history.push('/ProductsList')
                 }}>
                     <label htmlFor="vendor">Enter vendor</label>
-                    <input id="username" name="vendor" type="text" onChange={this.onChangeVendor}/>
+                    <StyledInput id="username" name="vendor" type="text" onChange={this.onChangeVendorValue}/>
                     <label htmlFor="name">Enter name</label>
-                    <input id="name" name="name" type="text" onChange={this.onChangeName}/>
+                    <StyledInput id="name" name="name" type="text" onChange={this.onChangeNameValue}/>
                     <label htmlFor="CPU">Enter CPU</label>
-                    <input id="CPU" name="CPU" type="text" onChange={this.onChangeCpu}/>
+                    <StyledInput id="CPU" name="CPU" type="text" onChange={this.onChangeCpuValue}/>
                     <label htmlFor="RAM">Enter RAM</label>
-                    <input type="text" id='RAM' name='RAM' onChange={this.onChangeRam}/>
+                    <StyledInput type="text" id='RAM' name='RAM' onChange={this.onChangeRamValue}/>
                     <label htmlFor="ROM">Enter ROM</label>
-                    <input type="text" id='ROM' name='ROM' onChange={this.onChangeRom}/>
+                    <StyledInput type="text" id='ROM' name='ROM' onChange={this.onChangeRomValue}/>
                     <label htmlFor="size">Enter size</label>
-                    <input type="text" id='size' name='size' onChange={this.onChangeSize}/>
+                    <StyledInput type="text" id='size' name='size' onChange={this.onChangeSizeValue}/>
                     <label htmlFor="simage">Enter simage</label>
-                    <input type="text" id='simage' name='simage' onChange={this.onChangeSimage}/>
+                    <StyledInput type="text" id='simage' name='simage' onChange={this.onChangeSimageValue}/>
                     <label htmlFor="bimage">Enter bimage</label>
-                    <input type="text" id='bimage' name='bimage' onChange={this.onChangeBimage}/>
+                    <StyledInput type="text" id='bimage' name='bimage' onChange={this.onChangeBimageValue}/>
                     <label htmlFor="price">Enter price</label>
-                    <input type="text" id='price' name='price' onChange={this.onChangePrice}/>
-                    <button>Save Product</button>
-                </form>
+                    <StyledInput type="text" id='price' name='price' onChange={this.onChangePriceValue}/>
+                    <StyledButton><FormattedMessage id="saveProductButton"/> </StyledButton>
+                </StyledForm>
+                <FormattedMessage id="newProductPage">
+                    {title => <Helmet>
+                        <title>{title}</title>
+                    </Helmet>}
+                </FormattedMessage>
             </div>
         )
     }
